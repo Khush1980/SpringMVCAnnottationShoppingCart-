@@ -24,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional; 
   
 //Transactional for Hibernate 
-@Transactional
+//@Transactional
 public class OrderDAOImpl implements OrderDAO { 
   
     @Autowired
@@ -108,8 +108,7 @@ public class OrderDAOImpl implements OrderDAO {
         return (Order) crit.uniqueResult(); 
     } 
   
- @Override
-    public OrderInfo getOrderInfo(String orderId) { 
+ public OrderInfo getOrderInfo(String orderId) { 
         Order order = this.findOrder(orderId); 
         if (order == null) { 
             return null; 
@@ -119,7 +118,7 @@ public class OrderDAOImpl implements OrderDAO {
                 order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone()); 
     } 
   
- @Override
+ //@Override
     public List<OrderDetailInfo> listOrderDetailInfos(String orderId) { 
         String sql = "Select new " + OrderDetailInfo.class.getName() // 
                 + "(d.id, d.product.code, d.product.name , d.quanity,d.price,d.amount) "// 
